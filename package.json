@@ -1,6 +1,6 @@
 {
   "name": "twitter-list-sync",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Sync your Twitter followers/following to Lists",
   "main": "dist/index.js",
   "scripts": {
