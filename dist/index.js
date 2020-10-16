@@ -163,7 +163,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.run = exports.following = void 0;
+exports.run = exports.followers = exports.following = void 0;
 const twitter_lite_1 = __importDefault(__webpack_require__(851));
 const core_1 = __webpack_require__(470);
 const client = new twitter_lite_1.default({
@@ -173,7 +173,10 @@ const client = new twitter_lite_1.default({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 exports.following = async () => {
-    const following = await client.get("/followers/list");
+    if (!process.env.FOLLOWING_LIST)
+        return;
+    console.log("Starting sync for following");
+    const following = await client.get("/friends/list");
     for await (const user of following.users) {
         console.log(`Adding @${user.screen_name}`);
         await client.post("/lists/members/create", {
@@ -187,8 +190,22 @@ exports.following = async () => {
         }
     }
 };
+exports.followers = async () => {
+    if (!process.env.FOLLOWERS_LIST)
+        return;
+    console.log("Starting sync for followers");
+    const followers = await client.get("/followers/list");
+    for await (const user of followers.users) {
+        console.log(`Adding @${user.screen_name}`);
+        await client.post("/lists/members/create", {
+            list_id: process.env.FOLLOWERS_LIST,
+            user_id: user.id_str,
+        });
+    }
+};
 exports.run = async () => {
     await exports.following();
+    await exports.followers();
 };
 exports.run()
     .then(() => { })
