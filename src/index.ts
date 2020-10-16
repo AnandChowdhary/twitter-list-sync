@@ -9,6 +9,7 @@ const client = new Twitter({
 });
 
 export const following = async () => {
+  if (!process.env.FOLLOWING_LIST) return;
   console.log("Starting sync for following");
   const following: { users: Array<{ id_str: string; screen_name: string }> } = await client.get(
     "/friends/list"
@@ -28,6 +29,7 @@ export const following = async () => {
 };
 
 export const followers = async () => {
+  if (!process.env.FOLLOWERS_LIST) return;
   console.log("Starting sync for followers");
   const followers: { users: Array<{ id_str: string; screen_name: string }> } = await client.get(
     "/followers/list"
