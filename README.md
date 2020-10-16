@@ -2,8 +2,8 @@
 
 GitHub Action to sync your Twitter followers and following users to a list.
 
+[![Twitter List Sync CI](https://github.com/AnandChowdhary/twitter-list-sync/workflows/Twitter%20List%20Sync%20CI/badge.svg)](https://github.com/AnandChowdhary/twitter-list-sync/actions?query=workflow%3A%22Twitter%20List%20Sync%20+CI%22)
 [![Build CI](https://github.com/AnandChowdhary/twitter-list-sync/workflows/Build%20CI/badge.svg)](https://github.com/AnandChowdhary/twitter-list-sync/actions?query=workflow%3A%22Build+CI%22)
-[![Test CI](https://github.com/AnandChowdhary/twitter-list-sync/workflows/Test%20CI/badge.svg)](https://github.com/AnandChowdhary/twitter-list-sync/actions?query=workflow%3A%22Test+CI%22)
 [![Release CI](https://github.com/AnandChowdhary/twitter-list-sync/workflows/Release%20CI/badge.svg)](https://github.com/AnandChowdhary/twitter-list-sync/actions?query=workflow%3A%22Release+CI%22)
 [![Node CI](https://github.com/AnandChowdhary/twitter-list-sync/workflows/Node%20CI/badge.svg)](https://github.com/AnandChowdhary/twitter-list-sync/actions?query=workflow%3A%22Node+CI%22)
 
@@ -34,7 +34,7 @@ on:
   repository_dispatch:
     types: [sync]
   schedule:
-    - cron: "45 * * * *"
+    - cron: "45 9 * * *"
   push:
     branches: [master]
   workflow_dispatch:
