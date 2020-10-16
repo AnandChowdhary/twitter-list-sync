@@ -1,5 +1,5 @@
 {
-  "name": "github-actions-starter",
+  "name": "twitter-list-sync",
   "version": "1.0.2",
   "description": "Starter for GitHub Actions with TypeScript and automated releases",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/koj-co/action.ts.git"
+    "url": "git+https://github.com/AnandChowdhary/twitter-list-sync.git"
   },
   "keywords": [
     "github",
@@ -22,9 +22,9 @@
   "author": "Anand Chowdhary <mail@anandchowdhary.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/koj-co/action.ts/issues"
+    "url": "https://github.com/AnandChowdhary/twitter-list-sync/issues"
   },
-  "homepage": "https://github.com/koj-co/action.ts#readme",
+  "homepage": "https://github.com/AnandChowdhary/twitter-list-sync#readme",
   "devDependencies": {
     "@semantic-release/git": "^9.0.0",
     "@types/jest": "^26.0.14",
