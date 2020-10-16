@@ -3,17 +3,17 @@ on:
   repository_dispatch:
     types: [sync]
   schedule:
-    - cron: "45 2 * * *"
+    - cron: "45 * * * *"
   push:
     branches: [master]
   workflow_dispatch:
 jobs:
   release:
-    name: Build and test
+    name: Sync
     runs-on: ubuntu-18.04
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
-      - name: Sync
+      - name: Twitter List Sync
         uses: AnandChowdhary/twitter-list-sync@master
         env:
           TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}

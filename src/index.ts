@@ -9,8 +9,9 @@ const client = new Twitter({
 });
 
 export const following = async () => {
+  console.log("Starting sync for following");
   const following: { users: Array<{ id_str: string; screen_name: string }> } = await client.get(
-    "/followers/list"
+    "/friends/list"
   );
   for await (const user of following.users) {
     console.log(`Adding @${user.screen_name}`);
@@ -26,8 +27,23 @@ export const following = async () => {
   }
 };
 
+export const followers = async () => {
+  console.log("Starting sync for followers");
+  const followers: { users: Array<{ id_str: string; screen_name: string }> } = await client.get(
+    "/followers/list"
+  );
+  for await (const user of followers.users) {
+    console.log(`Adding @${user.screen_name}`);
+    await client.post("/lists/members/create", {
+      list_id: process.env.FOLLOWERS_LIST,
+      user_id: user.id_str,
+    });
+  }
+};
+
 export const run = async () => {
   await following();
+  await followers();
 };
 
 run()
