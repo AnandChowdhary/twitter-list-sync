@@ -1,0 +1,26 @@
+name: Twitter List Sync CI
+on:
+  repository_dispatch:
+    types: [sync]
+  schedule:
+    - cron: "45 2 * * *"
+  push:
+    branches: [master]
+  workflow_dispatch:
+jobs:
+  release:
+    name: Build and test
+    runs-on: ubuntu-18.04
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - name: Sync
+        uses: AnandChowdhary/twitter-list-sync@master
+        env:
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET_KEY: ${{ secrets.TWITTER_API_SECRET_KEY }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          TWITTER_SCREEN_NAME: ${{ secrets.TWITTER_SCREEN_NAME }}
+          FOLLOWING_LIST: ${{ secrets.FOLLOWING_LIST }}
+          FOLLOWERS_LIST: ${{ secrets.FOLLOWERS_LIST }}
+          REMOVE_AFTER_ADDING: ${{ secrets.REMOVE_AFTER_ADDING }}
