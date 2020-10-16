@@ -1,7 +1,7 @@
 {
   "name": "twitter-list-sync",
-  "version": "1.0.2",
-  "description": "Starter for GitHub Actions with TypeScript and automated releases",
+  "version": "0.0.0",
+  "description": "Sync your Twitter followers/following to Lists",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -17,7 +17,7 @@
     "github actions",
     "nodejs",
     "typescript",
-    "starter"
+    "twitter"
   ],
   "author": "Anand Chowdhary <mail@anandchowdhary.com>",
   "license": "MIT",
