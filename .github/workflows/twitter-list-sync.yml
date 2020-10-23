@@ -3,7 +3,7 @@ on:
   repository_dispatch:
     types: [sync]
   schedule:
-    - cron: "45 * * * *"
+    - cron: "45 1 * * *"
   push:
     branches: [master]
   workflow_dispatch:
