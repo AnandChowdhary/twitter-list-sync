@@ -172,7 +172,7 @@ const client = new twitter_lite_1.default({
     access_token_key: process.env.TWITTER_ACCESS_TOKEN,
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
-exports.following = async () => {
+const following = async () => {
     if (!process.env.FOLLOWING_LIST)
         return;
     console.log("Starting sync for following");
@@ -190,7 +190,8 @@ exports.following = async () => {
         }
     }
 };
-exports.followers = async () => {
+exports.following = following;
+const followers = async () => {
     if (!process.env.FOLLOWERS_LIST)
         return;
     console.log("Starting sync for followers");
@@ -203,10 +204,12 @@ exports.followers = async () => {
         });
     }
 };
-exports.run = async () => {
+exports.followers = followers;
+const run = async () => {
     await exports.following();
     await exports.followers();
 };
+exports.run = run;
 exports.run()
     .then(() => { })
     .catch((error) => {
