@@ -7,3 +7,5 @@ runs:
 branding:
   icon: "users"
   color: "blue"
+- name: Twitter List Sync
+  uses: AnandChowdhary/twitter-list-sync@v1.1.0
